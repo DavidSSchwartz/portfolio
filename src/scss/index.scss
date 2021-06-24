@@ -1,0 +1,72 @@
+button, button:focus{
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+    padding: 0;
+}
+
+button:active{
+    outline: none;
+    background: transparent;
+    border: 1px solid grey;
+}
+
+@mixin neon($color) {
+    text-shadow:
+        0 0 7px $color,
+        0 0 10px $color,
+        0 0 21px $color,
+        0 0 42px $color,
+        0 0 82px $color,
+        0 0 92px $color,
+        0 0 102px $color,
+        0 0 151px $color;
+}
+
+@mixin flickerAndNeonAnimations($color) {
+    &.flicker {
+        @include neon($color);
+        animation: flicker 1.5s infinite alternate; 
+    }
+    &.neon {
+        @include neon($color);
+        animation: none;
+    }
+}
+
+$red: #ff1177;
+$orange: #ff9900;
+$yellow: #fdf300;
+$green: #0fa;
+$blue: #228dff;
+
+.animated-name {
+    cursor: pointer;
+}
+
+.name-D {
+    @include flickerAndNeonAnimations($red);
+}
+
+.name-a {
+    @include flickerAndNeonAnimations($orange);
+}
+
+.name-v {
+    @include flickerAndNeonAnimations($yellow);
+}
+
+.name-i {
+    @include flickerAndNeonAnimations($green);
+}
+
+.name-d {
+    @include flickerAndNeonAnimations($blue);
+}
+
+@keyframes flicker {
+    20%, 24%, 55% {       
+      text-shadow: none;
+    }
+  }
