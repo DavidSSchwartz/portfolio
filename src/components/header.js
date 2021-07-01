@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import AnimatedLetter from "./animated-letter";
+import AnimatedLetter from "./animated-letter"
+import SecondaryHeader from "./secondary-header"
 
 const Header = ({ siteTitle, description }) => {
   const [ amount, updateAmount ] = useState(0);
@@ -9,7 +10,7 @@ const Header = ({ siteTitle, description }) => {
     return text.split('').map((char, index) => {
         let style = {'animationDelay': (0.5 + (index + timing) / 10) + 's'};
         if (char === ' ')
-          style.marginLeft = '10px';
+          style.marginLeft = '12px';
         return <span
                 aria-hidden='true'
                 key={index}
@@ -27,9 +28,9 @@ const Header = ({ siteTitle, description }) => {
   const FlippingText = buildTextAnimations(Im, 'flipping', Hi.length * 2.5);
   const Name = "David";
   const Comma = ',';
-  const SpinningText = buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 2)
+  const SpinningText = buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.9)
   const Developer = 'web developer';
-  const PoppingText = buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 2.6);
+  const PoppingText = buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 2.5);
 
   const AnimatedName = [...Name].map(
                                   letter => <AnimatedLetter 
@@ -48,22 +49,11 @@ const Header = ({ siteTitle, description }) => {
         background: `black`,
         display: `flex`,
         alignItems: `center`,
+        letterSpacing: '-2px',
       }}
     >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-          color: `white`,
-        }}
-      >
-        <h1 
-          style={{ 
-            fontSize: '4rem',  
-          }}
-          className= {'header-text'}
-        >
+      <div className={'header-container'}>
+        <h1 className={'header-text'}>
             <p>
               {FallingText}
             </p>
@@ -82,9 +72,7 @@ const Header = ({ siteTitle, description }) => {
               {PoppingText}
             </p>
         </h1>
-        <h2>
-          {description}
-        </h2>
+        <SecondaryHeader />
       </div>
     </header>
 )
