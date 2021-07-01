@@ -1,29 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AnimatedLetter = (props) => {
-    const setNeonClass = (ev) => {
-        ev.target.className += ' neon';
+    const [ flickerClass, setFlickerClass ] = useState('');
+    const [ neonClass, setNeonClass ] = useState('');
+    const [ glowClass, setGlowClass ] = useState('');
+    const [ initialAnimation, setInitialAnimation ] = useState(` initial-animation-${props.letter}`);
+
+    useEffect(() => {
+        if (props.amount === props.name.length)
+            setGlowClass(' glow');
+        else
+            setGlowClass('')
+    }, [props.amount])
+
+    useEffect(() => {
+        setTimeout(() => {
+            setInitialAnimation('');
+        }, 3000)
+    },[])
+
+
+    const handleLetterClick = () => {
+        if (flickerClass === ' flicker') {
+            setFlickerClass('');
+            props.trackClick(props.amount - 1);
+        }
+        else {
+            setFlickerClass(' flicker');
+            props.trackClick(props.amount + 1);
+        }
     }
-    
-    const removeNeonClass = (ev) => {
-        ev.target.className = ev.target.className.replace(' neon', '');
-    }
-    
-    const setFlickerClass = (ev) => {
-        if (ev.type ===  "keypress" && ev.code !== 'Enter')
-            return;
-        ev.target.className.includes('flicker') ?
-            ev.target.className = ev.target.className.replace(' flicker', '') 
-            :
-            ev.target.className += ' flicker';
-    }
-    
+
     return (
         <button 
-            className={`animated-name name-${props.letter}`} 
-            onMouseOver={setNeonClass}
-            onMouseOut={removeNeonClass}
-            onClick={setFlickerClass}
+            className={`animated-name name-${props.letter}${neonClass}${flickerClass}${glowClass}${initialAnimation}`} 
+            onMouseOver={() => setNeonClass(' neon')}
+            onMouseOut={() => setNeonClass('')}
+            onClick={handleLetterClick}
         >
             {props.letter}
         </button>

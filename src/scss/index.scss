@@ -1,4 +1,4 @@
-button, button:focus{
+button, button:focus {
     outline: none;
     background: transparent;
     border: 1px solid transparent;
@@ -6,10 +6,40 @@ button, button:focus{
     padding: 0;
 }
 
-button:active{
+button:active {
     outline: none;
     background: transparent;
     border: 1px solid grey;
+}
+@mixin slideInAnimation($timing, $color, $name) {
+    position: relative;
+    -webkit-animation: slide-in-#{$name} .5s 1 both;
+    -moz-animation: slide-in-#{$name} .5s 1 both;
+    animation: slide-in-#{$name} .5s 1 both;
+    animation-delay: $timing;
+    @keyframes slide-in-#{$name} {
+        0% {
+          left: 1em;
+          opacity: 0;
+        }
+        50% {
+            @include neon($color);
+        }
+        100% {
+          left: 0;
+          opacity: 1;
+        }
+    }
+    @-webkit-keyframes slide-in-#{$name} {
+        0% {
+          right: 2em;
+          opacity: .5;
+        }  
+        100% {
+          right: 0;
+          opacity: 1;
+        }
+    }
 }
 
 @mixin neon($color) {
@@ -24,16 +54,48 @@ button:active{
         0 0 151px $color;
 }
 
-@mixin flickerAndNeonAnimations($color) {
+@mixin glowAnimation($color, $name) {
+    -webkit-animation: glow-#{$name} 1s ease-in-out infinite alternate;
+    -moz-animation: glow-#{$name} 1s ease-in-out infinite alternate;
+    animation: glow-#{$name} 1s ease-in-out infinite alternate;
+    @keyframes glow-#{$name} {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px $color, 0 0 40px $color, 0 0 50px $color, 0 0 60px $color, 0 0 70px $color;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 30px $color, 0 0 40px $color, 0 0 50px $color, 0 0 60px $color, 0 0 70px $color, 0 0 80px $color;
+        }
+    }
+    
+    @-webkit-keyframes glow-#{$name} {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px $color, 0 0 40px $color, 0 0 50px $color, 0 0 60px $color, 0 0 70px $color;
+        }
+        to {
+            text-shadow: 0 0 20px #fff, 0 0 30px $color, 0 0 40px $color, 0 0 50px $color, 0 0 60px $color, 0 0 70px $color, 0 0 80px $color;
+        }
+    }
+}
+
+@mixin flickerNeonGlowAnimations($color, $name) {
     &.flicker {
         @include neon($color);
-        animation: flicker 1.5s infinite alternate; 
+        -webkit-animation: flicker 1.5s infinite alternate;
+        -moz-animation: flicker 1.5s infinite alternate;
+        animation: flicker 1.5s infinite alternate;
     }
     &.neon {
         @include neon($color);
+        -webkit-animation: none;
+        -moz-animation: none;
         animation: none;
     }
+    &.glow {
+        @include glowAnimation($color, $name);
+    }
 }
+
+
 
 $red: #ff1177;
 $orange: #ff9900;
@@ -41,32 +103,134 @@ $yellow: #fdf300;
 $green: #0fa;
 $blue: #228dff;
 
+// .header-text {
+//     .dropIn {
+//         // @include glowAnimation($red, 'red');
+//         @include neon($green)
+//     }
+// }
+
+.falling-text {
+    position: relative;
+    opacity: 0;
+    animation: drop-in 0.75s forwards;
+}
+
+.flipping-text {
+    display: inline-block;
+    opacity: 0;
+    animation: rotate .4s forwards;
+}
+
+.popping-text {
+    display:inline-block;
+    opacity: 0;
+    animation: pop .4s forwards;
+}
+
+@keyframes pop {
+    50% {
+        opacity: .5;
+        transform:scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform:scale(1);
+    }
+}
+@keyframes rotate {
+  20%, 80% {
+    opacity: .6;
+    transform: rotateY(180deg);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: rotateY(360deg);
+  }
+}
 .animated-name {
     cursor: pointer;
 }
 
+.initial-animation-D {
+    @include slideInAnimation(1.8s, $red, 'D');
+
+}
+.initial-animation-a {
+    @include slideInAnimation(1.9s, $orange, 'a');
+
+}
+.initial-animation-v {
+    @include slideInAnimation(2s, $yellow, 'v');
+
+}
+.initial-animation-i {
+    @include slideInAnimation(2.1s, $green, 'i');
+
+}
+.initial-animation-d {
+    @include slideInAnimation(2.2s, $blue, 'd');
+
+}
 .name-D {
-    @include flickerAndNeonAnimations($red);
+    @include flickerNeonGlowAnimations($red, 'D');
 }
 
 .name-a {
-    @include flickerAndNeonAnimations($orange);
+    @include flickerNeonGlowAnimations($orange, 'a');
 }
 
 .name-v {
-    @include flickerAndNeonAnimations($yellow);
+    @include flickerNeonGlowAnimations($yellow, 'v');
 }
 
 .name-i {
-    @include flickerAndNeonAnimations($green);
+
+    @include flickerNeonGlowAnimations($green, 'i');
 }
 
 .name-d {
-    @include flickerAndNeonAnimations($blue);
+    @include flickerNeonGlowAnimations($blue, 'd');
 }
 
 @keyframes flicker {
     20%, 24%, 55% {       
-      text-shadow: none;
+        text-shadow: none;
     }
-  }
+}
+
+@keyframes drop-in {
+    0% {
+      bottom: 2em;
+      opacity: .5;
+    }  
+    100% {
+      bottom: 0;
+      opacity: 1;
+    }
+}
+.spinning-text {
+    display: inline-block;
+    opacity: 0;
+    animation: spin .3s forwards 3, depth .3s forwards 3, fadeIn 1.5s forwards 1;
+}
+
+@keyframes spin {
+    0% { transform: rotateY(0deg); }
+    25% { transform: rotateY(90deg); }
+    50% { transform: rotateY(180deg); }
+    75% { transform: rotateY(270deg); }
+    100% { transform: rotateY(360deg); }
+}
+@keyframes depth {
+    0% { text-shadow: 0 0 black;}
+    25% { text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black; }
+    50% { text-shadow: 0 0 black; }
+    75% { text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black; }
+    100% { text-shadow: 0 0 black;}
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
