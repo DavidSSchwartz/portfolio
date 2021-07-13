@@ -5,10 +5,10 @@ import SecondaryHeader from "./secondary-header"
 
 const Header = ({ siteTitle, description }) => {
   const [ amount, updateAmount ] = useState(0);
-  
+
   const buildTextAnimations = (text, className, timing) => {
     return text.split('').map((char, index) => {
-        let style = {'animationDelay': (0.5 + (index + timing) / 10) + 's'};
+        let style = {'animationDelay': ((index + timing) / 10) + 's'};
         if (char === ' ')
           style.marginLeft = '12px';
         return <span
@@ -25,12 +25,12 @@ const Header = ({ siteTitle, description }) => {
   const Hi = 'Hi,'
   const FallingText = buildTextAnimations(Hi, 'falling', 0);
   const Im = `I'm`;
-  const FlippingText = buildTextAnimations(Im, 'flipping', Hi.length * 2.5);
+  const FlippingText = buildTextAnimations(Im, 'flipping', Hi.length * 1.7);
   const Name = "David";
   const Comma = ',';
-  const SpinningText = buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.9)
+  const SpinningText = buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7)
   const Developer = 'web developer';
-  const PoppingText = buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 2.5);
+  const PoppingText = buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8);
 
   const AnimatedName = [...Name].map(
                                   letter => <AnimatedLetter 
@@ -43,21 +43,13 @@ const Header = ({ siteTitle, description }) => {
                                   );
                           
   return (
-    <header
-      style={{
-        height: '100vh',
-        background: `black`,
-        display: `flex`,
-        alignItems: `center`,
-        letterSpacing: '-2px',
-      }}
-    >
+    <header className={'main-header'}>
       <div className={'header-container'}>
         <h1 className={'header-text'}>
             <p>
               {FallingText}
             </p>
-            <p>
+            <p className={'h_min-width-max-cont'}>
               {FlippingText}
               <span 
                 style={{
@@ -68,7 +60,7 @@ const Header = ({ siteTitle, description }) => {
               </span>
               {SpinningText}
             </p>
-            <p>
+            <p className={'h_min-width-max-cont'}>
               {PoppingText}
             </p>
         </h1>

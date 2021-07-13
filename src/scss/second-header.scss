@@ -6,7 +6,14 @@
     position: relative;
     opacity: 0;
     animation: fly-up 0.75s forwards;
-    animation-delay: 4.5s;
+    animation-delay: 2.6s;
+    .secondary-header-text {
+        display: inline-block;
+        min-width: max-content;
+        &:first-of-type {
+            margin-right: .5rem;
+        }
+    }
 }
 .bullet {
     padding: 0 2rem;
