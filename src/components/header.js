@@ -46,10 +46,10 @@ const Header = ({ siteTitle, description }) => {
     <header className={'main-header'}>
       <div className={'header-container'}>
         <h1 className={'header-text'}>
-            <p>
+            <p className={'mobile-margin-half'}>
               {FallingText}
             </p>
-            <p className={'h_min-width-max-cont'}>
+            <p className={'h_min-width-max-cont mobile-margin-half'}>
               {FlippingText}
               <span 
                 style={{

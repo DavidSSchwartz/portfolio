@@ -10,3 +10,8 @@
 .h_inline-block {
     display: inline-block;
 }
+.mobile-margin-half {
+    @media screen and (max-width: 530px) {    
+        margin-bottom: .5rem;
+    }
+}
