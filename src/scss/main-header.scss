@@ -156,7 +156,9 @@ $blue: #228dff;
             font-size: 3.5rem;
     }
     @media screen and (max-width: 530px) {    
-        font-size: 2rem;
+        font-size: 2.5rem;
+        line-height: .6;
+        margin-bottom: 1rem;
     }
 }
 
