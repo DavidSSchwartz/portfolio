@@ -104,11 +104,11 @@ $green: #0fa;
 $blue: #228dff;
 
 .main-header {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #1d1d1d;
     padding: 4rem 7rem;
     letter-spacing: -2px;
-    max-height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
     @media screen and (max-width: 680px) {
         padding-left: 3rem;
     }
