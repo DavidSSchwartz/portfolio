@@ -108,6 +108,7 @@ $blue: #228dff;
     background-color: #1d1d1d;
     padding: 4rem 7rem;
     letter-spacing: -2px;
+    max-height: -webkit-fill-available;
     @media screen and (max-width: 680px) {
         padding-left: 3rem;
     }
