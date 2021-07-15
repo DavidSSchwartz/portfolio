@@ -4,6 +4,7 @@ module.exports = {
     description: `Front end Engineer / CSS Enthusiast`,
     author: `David`,
   },
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
@@ -30,8 +31,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require('autoprefixer')()
+        ],
+      },
+    },
   ],
 }

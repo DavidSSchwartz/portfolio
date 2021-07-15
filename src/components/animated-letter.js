@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { isSafari } from 'react-device-detect';
 
 const AnimatedLetter = (props) => {
     const [ flickerClass, setFlickerClass ] = useState('');
     const [ neonClass, setNeonClass ] = useState('');
     const [ glowClass, setGlowClass ] = useState('');
+    const [ miniTextShadowClass, setMiniTextShadowClass ] = useState('');
     const [ initialAnimation, setInitialAnimation ] = useState(` initial-animation-${props.letter}`);
 
     useEffect(() => {
@@ -14,11 +16,15 @@ const AnimatedLetter = (props) => {
     }, [props.amount])
 
     useEffect(() => {
+        if (isSafari)
+            setMiniTextShadowClass(' mini-text-shadow');
+        else
+            setMiniTextShadowClass('');
+
         setTimeout(() => {
             setInitialAnimation('');
         }, 3000)
     },[])
-
 
     const handleLetterClick = () => {
         if (flickerClass === ' flicker') {
@@ -33,7 +39,7 @@ const AnimatedLetter = (props) => {
 
     return (
         <button 
-            className={`animated-name name-${props.letter}${neonClass}${flickerClass}${glowClass}${initialAnimation}`} 
+            className={`animated-name name-${props.letter}${neonClass}${flickerClass}${glowClass}${initialAnimation}${miniTextShadowClass}`} 
             onMouseOver={() => setNeonClass(' neon')}
             onMouseOut={() => setNeonClass('')}
             onClick={handleLetterClick}
