@@ -1,15 +1,6 @@
 .h_min-width-max-cont {
     min-width: max-content;
 }
-.h_flex-container {
-    display: flex;
-}
-.h_flex-jc-center {
-    justify-content: center;
-}
-.h_inline-block {
-    display: inline-block;
-}
 .mobile-margin-half {
     @media screen and (max-width: 530px) {    
         margin-bottom: .5rem;

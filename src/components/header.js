@@ -1,37 +1,26 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
+import React, { useState, useEffect } from "react"
 import AnimatedLetter from "./animated-letter"
 import SecondaryHeader from "./secondary-header"
 
-const Header = ({ siteTitle, description }) => {
+
+const Header = () => {
   const [ amount, updateAmount ] = useState(0);
-
-  const buildTextAnimations = (text, className, timing) => {
-    return text.split('').map((char, index) => {
-        let style = {'animationDelay': ((index + timing) / 10) + 's'};
-        if (char === ' ')
-          style.marginLeft = '12px';
-        return <span
-                aria-hidden='true'
-                key={index}
-                style={style}
-                className={`${className}-text`}
-                >
-                {char}
-        </span>
-    });
-  };
-
-  const Hi = 'Hi,'
-  const FallingText = buildTextAnimations(Hi, 'falling', 0);
-  const Im = `I'm`;
-  const FlippingText = buildTextAnimations(Im, 'flipping', Hi.length * 1.7);
+  const [ fallingText, updateFallingText ] = useState('');
+  const [ flippingText, updateFlippingText ] = useState('');
+  const [ spinningText, updateSpinningText ] = useState('');
+  const [ poppingText, updatePoppingText ] = useState('');
   const Name = "David";
-  const Comma = ',';
-  const SpinningText = buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7)
-  const Developer = 'web developer';
-  const PoppingText = buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8);
 
+  useEffect(() => {
+    const Hi = 'Hi,'
+    updateFallingText(buildTextAnimations(Hi, 'falling', 0));
+    const Im = `I'm`;
+    updateFlippingText(buildTextAnimations(Im, 'flipping', Hi.length * 1.7));
+    const Comma = ',';
+    updateSpinningText(buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7));
+    const Developer = 'web developer';
+    updatePoppingText(buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8));
+  },[])
   const AnimatedName = [...Name].map(
                                   letter => <AnimatedLetter 
                                               key={letter} 
@@ -47,10 +36,10 @@ const Header = ({ siteTitle, description }) => {
       <div className={'header-container'}>
         <h1 className={'header-text'}>
             <p className={'mobile-margin-half'}>
-              {FallingText}
+              {fallingText}
             </p>
             <p className={'h_min-width-max-cont mobile-margin-half'}>
-              {FlippingText}
+              {flippingText}
               <span 
                 style={{
                   marginLeft:'10px',
@@ -58,10 +47,10 @@ const Header = ({ siteTitle, description }) => {
               >
                 {AnimatedName}
               </span>
-              {SpinningText}
+              {spinningText}
             </p>
             <p className={'h_min-width-max-cont'}>
-              {PoppingText}
+              {poppingText}
             </p>
         </h1>
         <SecondaryHeader />
@@ -69,12 +58,21 @@ const Header = ({ siteTitle, description }) => {
     </header>
 )
 }
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
+
+const buildTextAnimations = (text, className, timing) => {
+  return text.split('').map((char, index) => {
+      let style = {'animationDelay': ((index + timing) / 10) + 's'};
+      if (char === ' ')
+        style.marginLeft = '12px';
+      return <span
+              aria-hidden='true'
+              key={index}
+              style={style}
+              className={`${className}-text`}
+            >
+              {char}
+            </span>
+  });
+};

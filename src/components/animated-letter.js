@@ -9,13 +9,6 @@ const AnimatedLetter = (props) => {
     const [ initialAnimation, setInitialAnimation ] = useState(` initial-animation-${props.letter}`);
 
     useEffect(() => {
-        if (props.amount === props.name.length)
-            setGlowClass(' glow');
-        else
-            setGlowClass('')
-    }, [props.amount])
-
-    useEffect(() => {
         if (isSafari)
             setMiniTextShadowClass(' mini-text-shadow');
         else
@@ -24,7 +17,16 @@ const AnimatedLetter = (props) => {
         setTimeout(() => {
             setInitialAnimation('');
         }, 3000)
-    },[])
+    },[]);
+
+    useEffect(() => {
+        if (props.amount === props.name.length)
+            setGlowClass(' glow');
+        else
+            setGlowClass('')
+    }, [props.amount]);
+
+
 
     const handleLetterClick = () => {
         if (flickerClass === ' flicker') {
