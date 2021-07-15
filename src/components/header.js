@@ -20,7 +20,8 @@ const Header = () => {
     updateSpinningText(buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7));
     const Developer = 'web developer';
     updatePoppingText(buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8));
-  },[])
+  },[]);
+
   const AnimatedName = [...Name].map(
                                   letter => <AnimatedLetter 
                                               key={letter} 
