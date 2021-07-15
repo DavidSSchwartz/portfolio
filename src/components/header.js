@@ -9,6 +9,7 @@ const Header = () => {
   const [ flippingText, updateFlippingText ] = useState('');
   const [ spinningText, updateSpinningText ] = useState('');
   const [ poppingText, updatePoppingText ] = useState('');
+  const [ animatedName, updateAnimatedName ] = useState('');
   const Name = "David";
 
   useEffect(() => {
@@ -20,17 +21,27 @@ const Header = () => {
     updateSpinningText(buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7));
     const Developer = 'web developer';
     updatePoppingText(buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8));
+    updateAnimatedName(setAnimatedName());
   },[]);
 
-  const AnimatedName = [...Name].map(
-                                  letter => <AnimatedLetter 
-                                              key={letter} 
-                                              letter={letter} 
-                                              trackClick={updateAmount} 
-                                              amount={amount}
-                                              name={Name}
-                                            />
-                                  );
+  const setAnimatedName = (glowClass)=> {
+    return [...Name].map(
+      letter => <AnimatedLetter 
+                  key={letter} 
+                  letter={letter} 
+                  trackClick={updateAmount} 
+                  amount={amount}
+                  glowClass={glowClass}
+                />
+    );
+  }
+
+  useEffect(() => {
+    if (amount === Name.length)
+      updateAnimatedName(setAnimatedName(' glow'));
+    else
+      updateAnimatedName(setAnimatedName(''));
+}, [amount]);
                           
   return (
     <header className={'main-header'}>
@@ -46,7 +57,7 @@ const Header = () => {
                   marginLeft:'10px',
                 }}
               >
-                {AnimatedName}
+                {animatedName}
               </span>
               {spinningText}
             </p>
