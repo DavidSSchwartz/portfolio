@@ -30,14 +30,14 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `6rem 1.0875rem 1.45rem`,
+          backgroundColor: '#fff9f9',
         }}
       >
         <main
           style={{
-            marginTop: `4rem`,
-            marginBottom: `4rem`,
-          }}
+            paddingBottom: '4rem',
+          }}  
         >
           {children}
         </main>

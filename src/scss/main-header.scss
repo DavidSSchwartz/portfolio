@@ -122,6 +122,15 @@ $blue: #228dff;
     padding: 4rem 7rem;
     letter-spacing: -2px;
     position: relative;
+    box-shadow:
+        0px 1.4px 2.2px rgba(29, 29 , 29, 1),
+        0px 3.3px 5.3px rgba(29, 29 , 29, 0.719),
+        0px 6.3px 10px rgba(29, 29 , 29, 0.596),
+        0px 11.2px 17.9px rgba(29, 29 , 29, 0.5),
+        0px 20.9px 33.4px rgba(29, 29 , 29, 0.404),
+        0px 50px 80px rgba(29, 29 , 29, 0.281)
+        ;
+
     @media screen and (max-width: 680px) {
         padding-left: 3rem;
     }
