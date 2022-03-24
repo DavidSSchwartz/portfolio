@@ -1,4 +1,5 @@
 import React from 'react';
+import MyDay from '../images/MyDay.png';
 
 const WebsitesDisplay = () => {
     const wesbitesData = [
@@ -20,6 +21,13 @@ const WebsitesDisplay = () => {
             url: "https://keen-archimedes-4b402f.netlify.app",
             name: "List of Donors",
             madeWith: "React, Redux, Sass",
+            description: "desc3",
+
+        },
+        {
+            url: MyDay,
+            name: "MyDay",
+            madeWith: "React, TailWind",
             description: "desc3",
 
         }
