@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react"
 
 const SecondaryHeader = () => {
-    return (
-        <h2 className={'secondary-header'}>
-        <div>
-            <div className={'secondary-header-text'}>Front End Engineer  /</div> 
-            <div className={'secondary-header-text'}>CSS Enthusiast </div>
-        </div>
-      </h2>
-    )
+  return (
+    <h1 className={"secondary-header"}>
+      <div>
+        <div className={"secondary-header-text"}>FrontEnd /</div>
+        <div className={"secondary-header-text"}>CSS Specialist </div>
+      </div>
+    </h1>
+  )
 }
 
-export default SecondaryHeader;
+export default SecondaryHeader

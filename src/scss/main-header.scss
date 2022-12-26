@@ -126,39 +126,37 @@ $blue: #228dff;
         0px 1.4px 2.2px rgba(29, 29 , 29, 1),
         0px 3.3px 5.3px rgba(29, 29 , 29, 0.719),
         0px 6.3px 10px rgba(29, 29 , 29, 0.596),
-        0px 11.2px 17.9px rgba(29, 29 , 29, 0.5),
-        0px 20.9px 33.4px rgba(29, 29 , 29, 0.404),
-        0px 50px 80px rgba(29, 29 , 29, 0.281)
         ;
 
     @media screen and (max-width: 680px) {
         padding-left: 3rem;
     }
-    &::after {
-        opacity: .5;
-        content: '';
-        background-repeat: no-repeat;
-        background-position: bottom;
-        background-size: contain;
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 500px;
-        height: 100%;
-        animation: fadeInHalf 3s;
-        background-image: url('../images/no-background-self-bw-fade-2.svg');
-        @media screen and (max-width: 960px) {    
-            position: absolute;
-            top: unset;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-        }
-        @media screen and (max-width: 680px) {
-            min-width: 300px;
-        }
-    }
+    //image of me
+    // &::after {
+    //     opacity: .5;
+    //     content: '';
+    //     background-repeat: no-repeat;
+    //     background-position: bottom;
+    //     background-size: contain;
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     min-width: 500px;
+    //     height: 100%;
+    //     animation: fadeInHalf 3s;
+    //     background-image: url('../images/no-background-self-bw-fade-2.svg');
+    //     @media screen and (max-width: 960px) {    
+    //         position: absolute;
+    //         top: unset;
+    //         bottom: 0;
+    //         left: 0;
+    //         right: 0;
+    //         height: 60%;
+    //     }
+    //     @media screen and (max-width: 680px) {
+    //         min-width: 300px;
+    //     }
+    // }
 }
 
 
