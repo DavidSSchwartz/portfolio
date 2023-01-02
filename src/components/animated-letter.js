@@ -9,7 +9,7 @@ const AnimatedLetter = (props) => {
 
     useEffect(() => {
         if (isSafari || isIOS)
-            setMiniTextShadowClass(' mini-text-shadow');
+            setMiniTextShadowClass('mini-text-shadow');
         else
             setMiniTextShadowClass('');
 
@@ -19,20 +19,20 @@ const AnimatedLetter = (props) => {
     },[]);
 
     const handleLetterClick = () => {
-        if (flickerClass === ' flicker') {
+        if (flickerClass === 'flicker') {
             setFlickerClass('');
             props.trackClick(props.amount - 1);
         }
         else {
-            setFlickerClass(' flicker');
+            setFlickerClass('flicker');
             props.trackClick(props.amount + 1);
         }
     }
 
     return (
         <button 
-            className={`animated-name name-${props.letter}${neonClass}${flickerClass}${props.glowClass}${initialAnimation}${miniTextShadowClass}`} 
-            onMouseOver={() => setNeonClass(' neon')}
+            className={`animated-name name-${props.letter} ${neonClass} ${flickerClass} ${props.glowClass} ${initialAnimation} ${miniTextShadowClass}`} 
+            onMouseOver={() => setNeonClass('neon')}
             onMouseOut={() => setNeonClass('')}
             onClick={handleLetterClick}
         >

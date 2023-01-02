@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import AnimatedLetter from "./animated-letter"
+import ParticlesComp from "./particles";
 import SecondaryHeader from "./secondary-header"
 
 
 const Header = () => {
-  const [ amount, updateAmount ] = useState(0);
+  const [ amountOfPressedLetters, updateAmountOfPressedLetters ] = useState(0);
+  const [ isNameGlowing, updateisNameGlowing ] = useState(false);
   const [ fallingText, updateFallingText ] = useState('');
   const [ flippingText, updateFlippingText ] = useState('');
   const [ spinningText, updateSpinningText ] = useState('');
@@ -29,19 +31,23 @@ const Header = () => {
       letter => <AnimatedLetter 
                   key={letter} 
                   letter={letter} 
-                  trackClick={updateAmount} 
-                  amount={amount}
+                  trackClick={updateAmountOfPressedLetters} 
+                  amount={amountOfPressedLetters}
                   glowClass={glowClass}
                 />
     );
   }
 
   useEffect(() => {
-    if (amount === Name.length)
-      updateAnimatedName(setAnimatedName(' glow'));
-    else
+    if (amountOfPressedLetters === Name.length) {
+      updateAnimatedName(setAnimatedName('glow'));
+      updateisNameGlowing(true);
+    }
+    else{
       updateAnimatedName(setAnimatedName(''));
-}, [amount]);
+      updateisNameGlowing(false);
+    }
+}, [amountOfPressedLetters]);
                           
   return (
     <header className={'main-header'}>
@@ -67,6 +73,7 @@ const Header = () => {
         </h1>
         <SecondaryHeader />
       </div>
+      <ParticlesComp enableParticlesMovement={!isNameGlowing}/>
     </header>
 )
 }
