@@ -10,7 +10,7 @@ const WebsitesDisplay = () => {
             description: "Displaying data pulled from SpaceX API, with ability to search and sort.",
         },
         {
-            url: "https://pokemon-almanac.herokuapp.com/",
+            url: "https://sweet-naiad-ba9214.netlify.app",
             name: "Pokemon Almanac",
             madeWith: "Next, React Scroll Parallax",
             description: "Next application pulling data from Pokemon API displaying use of Parallax scrolling technique.",
