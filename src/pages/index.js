@@ -8,8 +8,8 @@ import WebsitesDisplay from "../components/websites-display"
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    {/* <UnderConstruction /> */}
-    <WebsitesDisplay />
+    <UnderConstruction />
+    {/* <WebsitesDisplay /> */}
   </Layout>
 )
 
