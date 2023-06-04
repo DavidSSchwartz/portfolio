@@ -126,9 +126,13 @@ $blue: #228dff;
         0px 3.3px 5.3px rgba(29, 29 , 29, 0.719),
         0px 6.3px 10px rgba(29, 29 , 29, 0.596),
         ;
+    @media screen and (max-width: 960px) { 
+height: 85vh;
+    } 
 
     @media screen and (max-width: 680px) {
         padding-left: 3rem;
+        height: 70vh;
     }
     //image of me
     // &::after {
@@ -167,6 +171,11 @@ $blue: #228dff;
     padding: 4rem 7rem;
     max-width: 960;
     color: white;
+    @media screen and (max-width: 680px) {
+        padding-left: 1rem;
+        padding-right: 0;
+        padding-top: 6em;
+    }
 }
 
 .particles {

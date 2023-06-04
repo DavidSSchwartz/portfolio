@@ -30,13 +30,18 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          padding: `6rem 1.0875rem 1.45rem`,
-          backgroundColor: '#fff9f9',
+          //padding: `6rem 1.0875rem 1.45rem`,
+          //backgroundColor: '#fff9f9',
+
+          //for under construction
+          backgroundColor: '#fff',
         }}
       >
         <main
           style={{
-            paddingBottom: '4rem',
+            //paddingBottom: '4rem',
+            display: 'flex',
+            justifyContent: 'center',
           }}  
         >
           {children}

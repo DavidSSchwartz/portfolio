@@ -3,7 +3,6 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const UnderConstruction = () => {
     return (
-        <div>
             <StaticImage
                 src="../images/More-to-come.jpeg"
                 width={500}
@@ -12,7 +11,6 @@ const UnderConstruction = () => {
                 alt="Website under construction'"
                 style={{ marginTop: `6rem`, marginBottom: `1.45rem` }}
             />
-        </div>
     )
 }
 
