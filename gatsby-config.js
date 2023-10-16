@@ -8,7 +8,8 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
-    'gatsby-plugin-sass',
+    "gatsby-plugin-sass",
+    "gatsby-plugin-netlify",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,16 +32,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-postcss`,
       options: {
-        postCssPlugins: [
-          require('autoprefixer')()
-        ],
+        postCssPlugins: [require("autoprefixer")()],
       },
     },
   ],
