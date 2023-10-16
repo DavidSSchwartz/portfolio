@@ -5,33 +5,33 @@ import SecondaryHeader from "./secondary-header"
 
 
 const Header = () => {
-  const [ amountOfPressedLetters, updateAmountOfPressedLetters ] = useState(0);
-  const [ isNameGlowing, updateisNameGlowing ] = useState(false);
-  const [ fallingText, updateFallingText ] = useState('');
-  const [ flippingText, updateFlippingText ] = useState('');
-  const [ spinningText, updateSpinningText ] = useState('');
-  const [ poppingText, updatePoppingText ] = useState('');
-  const [ animatedName, updateAnimatedName ] = useState('');
+  const [ amountOfPressedLetters, setAmountOfPressedLetters ] = useState(0);
+  const [ isNameGlowing, setIsNameGlowing ] = useState(false);
+  const [ fallingText, setFallingText ] = useState('');
+  const [ flippingText, setFlippingText ] = useState('');
+  const [ spinningText, setSpinningText ] = useState('');
+  const [ poppingText, setPoppingText ] = useState('');
+  const [ animatedName, setAnimatedName ] = useState('');
   const Name = "David";
 
   useEffect(() => {
     const Hi = 'Hi,'
-    updateFallingText(buildTextAnimations(Hi, 'falling', 0));
+    setFallingText(buildTextAnimations(Hi, 'falling', 0));
     const Im = `I'm`;
-    updateFlippingText(buildTextAnimations(Im, 'flipping', Hi.length * 1.7));
+    setFlippingText(buildTextAnimations(Im, 'flipping', Hi.length * 1.7));
     const Comma = ',';
-    updateSpinningText(buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7));
+    setSpinningText(buildTextAnimations(Comma, 'spinning', (Hi.length + Im.length + Name.length) * 1.7));
     const Developer = 'web developer';
-    updatePoppingText(buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8));
-    updateAnimatedName(setAnimatedName());
+    setPoppingText(buildTextAnimations(Developer, 'popping', (Hi.length + Im.length + Name.length + Comma.length) * 1.8));
+    setAnimatedName(updateAnimatedName());
   },[]);
 
-  const setAnimatedName = (glowClass)=> {
+  const updateAnimatedName = (glowClass)=> {
     return [...Name].map(
       letter => <AnimatedLetter 
                   key={letter} 
                   letter={letter} 
-                  trackClick={updateAmountOfPressedLetters} 
+                  trackClick={setAmountOfPressedLetters} 
                   amount={amountOfPressedLetters}
                   glowClass={glowClass}
                 />
@@ -40,12 +40,12 @@ const Header = () => {
 
   useEffect(() => {
     if (amountOfPressedLetters === Name.length) {
-      updateAnimatedName(setAnimatedName('glow'));
-      updateisNameGlowing(true);
+      setAnimatedName(updateAnimatedName('glow'));
+      setIsNameGlowing(true);
     }
     else{
-      updateAnimatedName(setAnimatedName(''));
-      updateisNameGlowing(false);
+      setAnimatedName(updateAnimatedName(''));
+      setIsNameGlowing(false);
     }
 }, [amountOfPressedLetters]);
                           
