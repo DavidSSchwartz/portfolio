@@ -3,7 +3,7 @@ import ChevronDown from "./chevrondown"
 
 const ScrollDown = ({tictactoeRef}) => {
   const scrollToGame = () => {
-    tictactoeRef.scrollIntoView({ behavior: "smooth" });
+    tictactoeRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

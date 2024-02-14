@@ -27,7 +27,7 @@ const Header = ({ tictactoeRef }) => {
       <ParticlesComp
         enableParticlesMovement={isOnscreen && enableParticleMovement}
       />
-      <ScrollDown tictactoeRef={tictactoeRef.current} />
+      <ScrollDown tictactoeRef={tictactoeRef} />
     </header>
   )
 }
