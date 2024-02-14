@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Particles, { initParticlesEngine } from "@tsparticles/react"
 import { loadSlim } from "@tsparticles/slim"
 
@@ -40,7 +40,7 @@ const ParticlesComp = ({ enableParticlesMovement = true }) => {
               },
               move: {
                 enable: enableParticlesMovement,
-                outModes: "destroy",
+                // outModes: "destroy",
               },
             },
             interactivity: {

@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react"
 import AnimatedLetter from "./animated-letter"
 import ParticlesComp from "./particles"
 import SecondaryHeader from "./secondary-header"
+import useIsOnscreen from "../hooks/useIsOnScreen"
+import ScrollDown from "./scrolldown"
 
-const Header = () => {
+const Header = ({ tictactoeRef }) => {
   const [amountOfPressedLetters, setAmountOfPressedLetters] = useState(0)
-  const [isNameGlowing, setIsNameGlowing] = useState(false)
   const [fallingText, setFallingText] = useState("")
   const [flippingText, setFlippingText] = useState("")
   const [spinningText, setSpinningText] = useState("")
   const [poppingText, setPoppingText] = useState("")
   const [animatedName, setAnimatedName] = useState("")
   const [enableParticleMovement, setEnableParticleMovement] = useState(false)
+
+  const [isOnscreen, elementRef] = useIsOnscreen()
 
   const Name = "David"
 
@@ -68,7 +71,7 @@ const Header = () => {
   }, [amountOfPressedLetters])
 
   return (
-    <header className={"main-header"}>
+    <header className={"main-header"} ref={elementRef}>
       <div className={"header-container"}>
         <h1 className={"header-text"}>
           <p className={"mobile-margin-half"}>{fallingText}</p>
@@ -87,7 +90,10 @@ const Header = () => {
         </h1>
         <SecondaryHeader />
       </div>
-      <ParticlesComp enableParticlesMovement={enableParticleMovement} />
+      <ParticlesComp
+        enableParticlesMovement={isOnscreen && enableParticleMovement}
+      />
+      <ScrollDown tictactoeRef={tictactoeRef.current} />
     </header>
   )
 }
