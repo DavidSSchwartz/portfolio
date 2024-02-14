@@ -48,9 +48,6 @@ const PrimaryHeader = ({ setEnableParticleMovement }) => {
   }
 
   useEffect(() => {
-    if (amountOfPressedLetters === 0) {
-      return
-    }
     if (amountOfPressedLetters === Name.length) {
       setAnimatedName(updateAnimatedName("glow"))
       setEnableParticleMovement(false)
