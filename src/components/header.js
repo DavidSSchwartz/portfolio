@@ -17,7 +17,6 @@ const Header = ({ tictactoeRef }) => {
     }, 4000)
   }, [])
 
-
   return (
     <header className={"main-header"} ref={elementRef}>
       <div className={"header-container"}>
