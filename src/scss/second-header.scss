@@ -11,6 +11,7 @@
         display: inline-block;
         min-width: max-content;
         margin-right: .5rem;
+        user-select: none;
         @media screen and (max-width: 530px) {    
             font-size: .9em;
         }

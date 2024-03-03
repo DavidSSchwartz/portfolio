@@ -10,7 +10,6 @@ const Header = ({ tictactoeRef }) => {
 
   const [isOnscreen, elementRef] = useIsOnscreen()
 
-
   useEffect(() => {
     setTimeout(() => {
       setEnableParticleMovement(true)
